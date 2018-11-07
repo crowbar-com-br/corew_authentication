@@ -1,5 +1,5 @@
-# Corew API Gateway
-API Gateway for the Corew project
+# Corew Authentication
+Authentication for the Corew project
 
 ## Implementation
 
@@ -14,15 +14,15 @@ On your terminal:
 
 1. Clone the repository:
 ```
-$ git clone https://github.com/crowbar-com-br/corew_api_gateway.git
+$ git clone https://github.com/crowbar-com-br/corew_authentication.git
 ```
 2. Create a VirtualEnv:
 ```
-$ virtualenv corew_api_gateway/
+$ virtualenv corew_authentication/
 ```
 3. Go to the project folder:
 ```
-$ cd corew_api_gateway/
+$ cd corew_authentication/
 ```
 4. Change your source:
 ```
