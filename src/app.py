@@ -1,6 +1,11 @@
-import hug
-import json
-import jwt
+import	base64
+import	hug
+import	json
+import	jwt
+import	rsa
+from	cryption	import cryptKey
+
+keys	= cryptKey.Key()
 
 class APIUser(object):
 	"""A minimal example of a rich User object"""
@@ -44,13 +49,25 @@ def token_auth_call(user: hug.directives.user):
 def get_token(body):
 	"""Authenticate and return a token"""
 	secret_key		= 'super-secret-key-please-change'
-	username		= body['username']
-	password		= body['password']
+	data			= cryptKey.decryptData(body['payload'], keys.private)
+	username		= data['username']
+	password		= data['password']
 	mockusername 	= 'user'
 	mockpassword 	= 'user'
 	if mockpassword == password and mockusername == username: # This is an example. Don't do that.
-		return {"token" : jwt.encode({'user': username, 'data': ''}, secret_key, algorithm='HS256')}
+		payload	= {
+			'payload'	: cryptKey.encryptData(
+				{ "token" : str(jwt.encode(
+					{'user': username, 'data': ''}, secret_key, algorithm='HS256')
+				)}, cryptKey.loadPublic(body['publicKey'])
+			)
+		}
+		return payload
 	return 'Invalid username and/or password for user: {0}'.format(username)
+
+@hug.get('/publicKey')
+def publicKey():
+	return { 'publicKey' : cryptKey.savePublic(keys.public) }
 
 def is_json(myjson):
 	try:
