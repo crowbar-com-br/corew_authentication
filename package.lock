@@ -2,3 +2,4 @@ hug
 gunicorn
 PyJWT
 rsa
+psutil
