@@ -3,3 +3,4 @@ gunicorn
 PyJWT
 rsa
 psutil
+cryptography
