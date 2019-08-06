@@ -12,25 +12,30 @@ Authentication for the Corew project
 ### Installation
 On your terminal:
 
-1. Clone the repository:
-```
-$ git clone https://github.com/crowbar-com-br/corew_authentication.git
-```
-2. Create a VirtualEnv:
+
+1. Create a VirtualEnv:
 ```
 $ virtualenv corew_authentication/
 ```
-3. Go to the project folder:
+2. Go to the env folder:
 ```
 $ cd corew_authentication/
 ```
-4. Change your source:
+3. Change your source:
 ```
 $ source bin/activate
 ```
-5. Install the necessary packages:
+4. Clone the repository:
 ```
-$ pip install -r package.lock
+$ git clone https://github.com/crowbar-com-br/corew_authentication.git
+```
+5. Go to the project folder:
+```
+$ cd corew_authentication/
+```
+6. Install the necessary packages:
+```
+$ pip install -r requirements.txt
 ```
 
 ### Usage
